@@ -27,7 +27,7 @@ public class AdoptionRequest {
     @NotNull
     private Long petID;
 
-    @Size(min = 10, max = 1000)
+    @Size(max = 1000)
     private String message;
     private boolean approved = false;
 

@@ -27,7 +27,7 @@ public class AddPetRequest {
     @NotNull
     private Long newPetID;
 
-    @Size(min = 10, max = 1000)
+    @Size(max = 1000)
     private String message;
 
     private boolean approved = false;
