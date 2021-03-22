@@ -86,8 +86,8 @@ class AdoptServiceApplicationTests {
     @Test
     public void messageTooLongAdoptionRequest() {
         AdoptionRequest adoptionRequest = new AdoptionRequest();
-        adoptionRequest.setUserID(1l);
-        adoptionRequest.setPetID(1l);
+        adoptionRequest.setUserID(1L);
+        adoptionRequest.setPetID(1L);
         adoptionRequest.setMessage("Što se tiče lokalnih stranica, ova stranica je kao DogsTrust (http://www.dogstrust.ba/en/), s tim da DogsTrust ima razne druge stvari i novosti koje objavljuje na svojoj stranici, dok smo mi mislili da se baziramo samo na udomljavanje. Također, na DogsTrust opcija udomljavanja ide preko prijave i e-maila, dok u ovom slučaju to nije tako. Također, ova stranica neće biti bazirana samo na pse.\n" +
                 "Samim tim, pronađena je jedna stranica koja vrši sličnu stvar kao naša, a zove se Rehome (https://rehome.adoptapet.com). Ova stranica udomljava životinje online, na sličan način kao što će to biti urađeno ovdje, s tim da ovdje neće biti opcije upoznavanja budućih vlasnika i vršenja procesa udomljavanja od strane korisnika koji je prijavio životinju na udomljavanje, nego će to biti posao administracije. Druga stranica koja je namijenja samo za udomljavanje životinja jeste The Shelter Pet Project (https://theshelterpetproject.org) i nešto slično će postojati i ona ovoj stranici, uz ostale funkcionalnosti. Dakle, može se reći da je ova naša stranica kombinacija Rehome i The Shelter Pet Project stranice.\n");
         Set<ConstraintViolation<AdoptionRequest>> violations = validator.validate(adoptionRequest);
@@ -97,8 +97,8 @@ class AdoptServiceApplicationTests {
     @Test
     public void messageTooLongAddPetRequest() {
         AddPetRequest addPetRequest = new AddPetRequest();
-        addPetRequest.setUserID(1l);
-        addPetRequest.setNewPetID(1l);
+        addPetRequest.setUserID(1L);
+        addPetRequest.setNewPetID(1L);
         addPetRequest.setMessage("Što se tiče lokalnih stranica, ova stranica je kao DogsTrust (http://www.dogstrust.ba/en/), s tim da DogsTrust ima razne druge stvari i novosti koje objavljuje na svojoj stranici, dok smo mi mislili da se baziramo samo na udomljavanje. Također, na DogsTrust opcija udomljavanja ide preko prijave i e-maila, dok u ovom slučaju to nije tako. Također, ova stranica neće biti bazirana samo na pse.\n" +
                 "Samim tim, pronađena je jedna stranica koja vrši sličnu stvar kao naša, a zove se Rehome (https://rehome.adoptapet.com). Ova stranica udomljava životinje online, na sličan način kao što će to biti urađeno ovdje, s tim da ovdje neće biti opcije upoznavanja budućih vlasnika i vršenja procesa udomljavanja od strane korisnika koji je prijavio životinju na udomljavanje, nego će to biti posao administracije. Druga stranica koja je namijenja samo za udomljavanje životinja jeste The Shelter Pet Project (https://theshelterpetproject.org) i nešto slično će postojati i ona ovoj stranici, uz ostale funkcionalnosti. Dakle, može se reći da je ova naša stranica kombinacija Rehome i The Shelter Pet Project stranice.\n");
         Set<ConstraintViolation<AddPetRequest>> violations = validator.validate(addPetRequest);
@@ -108,24 +108,24 @@ class AdoptServiceApplicationTests {
     @Test
     public void approvedIsFalseByDefaultAdoptionRequest() {
         AdoptionRequest adoptionRequest = new AdoptionRequest();
-        adoptionRequest.setUserID(1l);
-        adoptionRequest.setPetID(1l);
+        adoptionRequest.setUserID(1L);
+        adoptionRequest.setPetID(1L);
         assertFalse(adoptionRequest.isApproved());
     }
 
     @Test
     public void approvedIsFalseByDefaultAddPetRequest() {
         AddPetRequest addPetRequest = new AddPetRequest();
-        addPetRequest.setUserID(1l);
-        addPetRequest.setNewPetID(1l);
+        addPetRequest.setUserID(1L);
+        addPetRequest.setNewPetID(1L);
         assertFalse(addPetRequest.isApproved());
     }
 
     @Test
     public void validAdoptionRequest() {
         AdoptionRequest adoptionRequest = new AdoptionRequest();
-        adoptionRequest.setPetID(1l);
-        adoptionRequest.setUserID(1l);
+        adoptionRequest.setPetID(1L);
+        adoptionRequest.setUserID(1L);
         Set<ConstraintViolation<AdoptionRequest>> violations = validator.validate(adoptionRequest);
         assertTrue(violations.isEmpty());
     }
@@ -133,8 +133,8 @@ class AdoptServiceApplicationTests {
     @Test
     public void validAddPetRequest() {
         AddPetRequest addPetRequest = new AddPetRequest();
-        addPetRequest.setNewPetID(1l);
-        addPetRequest.setUserID(1l);
+        addPetRequest.setNewPetID(1L);
+        addPetRequest.setUserID(1L);
         Set<ConstraintViolation<AddPetRequest>> violations = validator.validate(addPetRequest);
         assertTrue(violations.isEmpty());
     }
