@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -19,8 +21,13 @@ public class AddPetRequest {
     @JsonIgnore
     private Long id;
 
+    @NotNull
     private Long userID;
+
+    @NotNull
     private Long newPetID;
+
+    @Size(max = 100)
     private String message;
     private boolean approved = false;
 
