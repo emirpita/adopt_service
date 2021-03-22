@@ -28,7 +28,7 @@ public class AdoptionRequestController {
         if (adoptionRequest.getUserID() == null)
             return new ResponseMessage(false, "User ID can't be null.", "BAD_REQUEST");
         if (adoptionRequest.getPetID() == null)
-            return new ResponseMessage(false, "New pet ID can't be null.", "BAD_REQUEST");
+            return new ResponseMessage(false, "Pet ID can't be null.", "BAD_REQUEST");
         try {
             adoptionRequestService.addAdoptionRequest(adoptionRequest);
             return new ResponseMessage(true, "Request to adopt a pet with ID= " + adoptionRequest.getPetID() + " added successfully!", "SUCCESS");
