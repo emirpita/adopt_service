@@ -29,6 +29,7 @@ public class AddPetRequest {
 
     @Size(max = 100)
     private String message;
+
     private boolean approved = false;
 
     public Long getId() {
