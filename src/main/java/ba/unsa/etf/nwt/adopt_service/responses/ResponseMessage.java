@@ -1,7 +1,7 @@
 package ba.unsa.etf.nwt.adopt_service.responses;
 
 public class ResponseMessage {
-    private boolean success;
+    private Boolean success;
     private String message;
     private String status;
 
@@ -11,7 +11,7 @@ public class ResponseMessage {
         this.status = status;
     }
 
-    public boolean getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
