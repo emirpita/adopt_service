@@ -1,7 +1,7 @@
 package ba.unsa.etf.nwt.adopt_service.controllers;
 
 import ba.unsa.etf.nwt.adopt_service.models.AddPetRequest;
-import ba.unsa.etf.nwt.adopt_service.responses.ResponseMessage;
+import ba.unsa.etf.nwt.adopt_service.response.ResponseMessage;
 import ba.unsa.etf.nwt.adopt_service.services.AddPetRequestService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

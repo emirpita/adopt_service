@@ -1,21 +1,23 @@
-package ba.unsa.etf.nwt.adopt_service.responses;
+package ba.unsa.etf.nwt.adopt_service.response;
+
+import org.springframework.http.HttpStatus;
 
 public class ResponseMessage {
     private Boolean success;
+    private HttpStatus status;
     private String message;
-    private String status;
 
-    public ResponseMessage(boolean success, String message, String status) {
+    public ResponseMessage(Boolean success, HttpStatus status, String message) {
         this.success = success;
-        this.message = message;
         this.status = status;
+        this.message = message;
     }
 
     public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
@@ -27,11 +29,11 @@ public class ResponseMessage {
         this.message = message;
     }
 
-    public String getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(HttpStatus status) {
         this.status = status;
     }
 }
