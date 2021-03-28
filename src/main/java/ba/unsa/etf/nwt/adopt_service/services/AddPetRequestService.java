@@ -19,17 +19,8 @@ public class AddPetRequestService {
     }
 
     public ResponseMessage addAddPetRequest(AddPetRequest addPetRequest) {
-        if (addPetRequest.getMessage().length() > 1000)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "Request message can't have more than 1000 characters.");
-        if (addPetRequest.getUserID() == null)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "User ID can't be null.");
-        if (addPetRequest.getNewPetID() == null)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "New pet ID can't be null.");
-        try {
-            addPetRequestRepository.save(addPetRequest);
-            return new ResponseMessage(true, HttpStatus.OK, "Request to add a new pet added successfully!");
-        } catch (Exception e) {
-            return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Database Error: Error saving request to database.");
-        }
+        addPetRequestRepository.save(addPetRequest);
+        return new ResponseMessage(true, HttpStatus.OK, "Request to add a new pet added successfully!");
+
     }
 }

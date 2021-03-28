@@ -19,17 +19,8 @@ public class AdoptionRequestService {
     }
 
     public ResponseMessage addAdoptionRequest(AdoptionRequest adoptionRequest) {
-        if (adoptionRequest.getMessage().length() > 1000)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "Request message can't have more than 1000 characters.");
-        if (adoptionRequest.getUserID() == null)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "User ID can't be null.");
-        if (adoptionRequest.getPetID() == null)
-            return new ResponseMessage(false, HttpStatus.BAD_REQUEST, "Pet ID can't be null.");
-        try {
-            adoptionRequestRepository.save(adoptionRequest);
-            return new ResponseMessage(true, HttpStatus.OK, "Request to adopt a pet with ID=" + adoptionRequest.getPetID() + " added successfully!");
-        } catch (Exception e) {
-            return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Database Error: Error saving request to database.");
-        }
+        adoptionRequestRepository.save(adoptionRequest);
+        return new ResponseMessage(true, HttpStatus.OK, "Request to adopt a pet with ID=" + adoptionRequest.getPetID() + " added successfully!");
+
     }
 }
