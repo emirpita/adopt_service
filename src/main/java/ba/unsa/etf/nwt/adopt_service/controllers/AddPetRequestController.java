@@ -23,17 +23,6 @@ public class AddPetRequestController {
 
     @PostMapping("/add-pet-request")
     public ResponseMessage addAddPetRequest(@RequestBody AddPetRequest addPetRequest) {
-        if (addPetRequest.getMessage().length() > 1000)
-            return new ResponseMessage(false, "Request message can't have more than 1000 characters.", "BAD_REQUEST");
-        if (addPetRequest.getUserID() == null)
-            return new ResponseMessage(false, "User ID can't be null.", "BAD_REQUEST");
-        if (addPetRequest.getNewPetID() == null)
-            return new ResponseMessage(false, "New pet ID can't be null.", "BAD_REQUEST");
-        try {
-            addPetRequestService.addAddPetRequest(addPetRequest);
-            return new ResponseMessage(true, "Request to add a new pet added successfully!", "SUCCESS");
-        } catch (Exception e) {
-            return new ResponseMessage(false, "Database Error: Error saving request to database.", "DB_ERROR");
-        }
+        return addPetRequestService.addAddPetRequest(addPetRequest);
     }
 }

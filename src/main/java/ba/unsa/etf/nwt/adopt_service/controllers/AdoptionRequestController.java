@@ -23,17 +23,6 @@ public class AdoptionRequestController {
 
     @PostMapping("/adoption-requests")
     public ResponseMessage addAdoptionRequest(@RequestBody AdoptionRequest adoptionRequest) {
-        if (adoptionRequest.getMessage().length() > 1000)
-            return new ResponseMessage(false, "Request message can't have more than 1000 characters.", "BAD_REQUEST");
-        if (adoptionRequest.getUserID() == null)
-            return new ResponseMessage(false, "User ID can't be null.", "BAD_REQUEST");
-        if (adoptionRequest.getPetID() == null)
-            return new ResponseMessage(false, "Pet ID can't be null.", "BAD_REQUEST");
-        try {
-            adoptionRequestService.addAdoptionRequest(adoptionRequest);
-            return new ResponseMessage(true, "Request to adopt a pet with ID= " + adoptionRequest.getPetID() + " added successfully!", "SUCCESS");
-        } catch (Exception e) {
-            return new ResponseMessage(false, "Database Error: Error saving request to database.", "DB_ERROR");
-        }
+        return adoptionRequestService.addAdoptionRequest(adoptionRequest);
     }
 }
