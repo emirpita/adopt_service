@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class AdoptionRequestController {
     }
 
     @PostMapping("/adoption-request")
-    public ResponseMessage addAdoptionRequest(@RequestBody AdoptionRequest adoptionRequest) {
+    public ResponseMessage addAdoptionRequest(@Valid @RequestBody AdoptionRequest adoptionRequest) {
         return adoptionRequestService.addAdoptionRequest(adoptionRequest);
     }
 }

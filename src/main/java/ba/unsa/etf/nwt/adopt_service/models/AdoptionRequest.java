@@ -21,14 +21,15 @@ public class AdoptionRequest {
     @JsonIgnore
     private Long id;
 
-    @NotNull
+    @NotNull(message = "User ID can't be null.")
     private Long userID;
 
-    @NotNull
+    @NotNull(message = "Pet ID can't be null.")
     private Long petID;
 
-    @Size(max = 1000)
+    @Size(max = 1000, message = "Request message can't have more than 1000 characters.")
     private String message;
+
     private boolean approved = false;
 
     public Long getId() {

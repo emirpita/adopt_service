@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class AddPetRequestController {
     }
 
     @PostMapping("/add-pet-request")
-    public ResponseMessage addAddPetRequest(@RequestBody AddPetRequest addPetRequest) {
+    public ResponseMessage addAddPetRequest(@Valid @RequestBody AddPetRequest addPetRequest) {
         return addPetRequestService.addAddPetRequest(addPetRequest);
     }
 }
