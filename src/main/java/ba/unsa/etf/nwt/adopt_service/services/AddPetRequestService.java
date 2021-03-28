@@ -26,7 +26,7 @@ public class AddPetRequestService {
             return new ResponseMessage(false, "New pet ID can't be null.", "BAD_REQUEST");
         try {
             addPetRequestRepository.save(addPetRequest);
-            return new ResponseMessage(true, "Request to add a new pet added successfully!", "SUCCESS");
+            return new ResponseMessage(true, "Request to add a new pet added successfully!", "OK");
         } catch (Exception e) {
             return new ResponseMessage(false, "Database Error: Error saving request to database.", "DB_ERROR");
         }

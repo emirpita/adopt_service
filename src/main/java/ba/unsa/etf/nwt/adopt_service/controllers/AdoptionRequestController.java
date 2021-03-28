@@ -16,12 +16,12 @@ import java.util.List;
 public class AdoptionRequestController {
     private final AdoptionRequestService adoptionRequestService;
 
-    @GetMapping("/adoption-requests")
+    @GetMapping("/adoption-request")
     public List<AdoptionRequest> getAdoptionRequests() {
         return adoptionRequestService.getAdoptionRequest();
     }
 
-    @PostMapping("/adoption-requests")
+    @PostMapping("/adoption-request")
     public ResponseMessage addAdoptionRequest(@RequestBody AdoptionRequest adoptionRequest) {
         return adoptionRequestService.addAdoptionRequest(adoptionRequest);
     }

@@ -26,7 +26,7 @@ public class AdoptionRequestService {
             return new ResponseMessage(false, "Pet ID can't be null.", "BAD_REQUEST");
         try {
             adoptionRequestRepository.save(adoptionRequest);
-            return new ResponseMessage(true, "Request to adopt a pet with ID= " + adoptionRequest.getPetID() + " added successfully!", "SUCCESS");
+            return new ResponseMessage(true, "Request to adopt a pet with ID=" + adoptionRequest.getPetID() + " added successfully!", "OK");
         } catch (Exception e) {
             return new ResponseMessage(false, "Database Error: Error saving request to database.", "DB_ERROR");
         }
