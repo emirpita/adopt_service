@@ -355,4 +355,32 @@ public class AdoptServiceRoutingTests {
                         "]\n" +
                         "}\n"));
     }
+
+    @Test
+    void GetApprovedAdoptionRequestsInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/adoption-request/approved")
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void GetNotApprovedAdoptionRequestsInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/adoption-request/not-approved")
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void GetAdoptionRequestsByUserIDInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/adoption-request/{userID}", 1)
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+    // TODO: dodati jos testova
 }
