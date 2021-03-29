@@ -109,7 +109,7 @@ public class AddPetRequestService {
                     .findAll()
                     .stream()
                     .filter(n -> n.getNewPetID().equals(newPetID))
-                    .collect(Collectors.toList()).get(0) != null)
+                    .collect(Collectors.toList()).size() == 0)
                 return new ResponseMessage(true, HttpStatus.OK, "Request to add a pet with pet id=" + newPetID + " deleted successfully!");
             return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Internal server or database error!");
         } catch (Exception e) {
