@@ -162,7 +162,7 @@ public class AddPetRequestRoutesTest {
     }
 
     @Test
-    void CreateNewAddPetnRequestPetIDMissing() throws Exception {
+    void CreateNewAddPetRequestPetIDMissing() throws Exception {
         String newRequest = "{\n" +
                 "    \"userID\": 1,\n" +
                 "    \"message\": \"Pet care\",\n" +
@@ -188,7 +188,7 @@ public class AddPetRequestRoutesTest {
     }
 
     @Test
-    void GetApprovedAdoptionRequestsInJSON() throws Exception {
+    void GetApprovedAAddNewPetRequestsInJSON() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/approved")
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
@@ -197,7 +197,7 @@ public class AddPetRequestRoutesTest {
     }
 
     @Test
-    void GetNotApprovedAdoptionRequestsInJSON() throws Exception {
+    void GetNotApprovedAddNewPetRequestsInJSON() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/not-approved")
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
@@ -206,8 +206,17 @@ public class AddPetRequestRoutesTest {
     }
 
     @Test
-    void GetAdoptionRequestsByUserIDInJSON() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/{userID}", 1)
+    void GetAddNewPetRequestsByUserIDInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/user/{userID}", 1)
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isMethodNotAllowed())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void GetAddNewPetRequestsByNewPetIDInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/pet/{newPetID}", 400)
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
@@ -215,17 +224,8 @@ public class AddPetRequestRoutesTest {
     }
 
     @Test
-    void GetAdoptionRequestsByNewPetIDInJSON() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/{newPetID}", 10)
-                .contentType(MediaType.APPLICATION_JSON);
-        mockMvc.perform(requestBuilder)
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-    }
-
-    @Test
-    void deleteAdoptionRequestsByUserIDInJSON() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/add-pet-request/{userID}", 1)
+    void deleteAddNewPetRequestsByUserIDInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/add-pet-request/user/{userID}", 5)
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
@@ -233,23 +233,23 @@ public class AddPetRequestRoutesTest {
                 .andExpect(content().json("{\n" +
                         "\"success\": true,\n" +
                         "\"status\": \"OK\",\n" +
-                        "\"message\": \"Request to add a pet with user id=1 deleted successfully!\"\n" +
+                        "\"message\": \"Request to add a pet with user id=5 deleted successfully!\"\n" +
                         "}"
                 ));
         ;
     }
 
     @Test
-    void deleteAdoptionRequestsByNewPetIDInJSON() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/add-pet-request/{newPetID}", 200)
+    void deleteAddNewPetRequestsByNewPetIDInJSON() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/add-pet-request/pet/{newPetID}", 200)
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\n" +
-                        "\"success\": true,\n" +
-                        "\"status\": \"OK\",\n" +
-                        "\"message\": \"Request to add a pet with pet id=200 deleted successfully!\"\n" +
+                        "\"success\": false,\n" +
+                        "\"status\": \"NOT_FOUND\",\n" +
+                        "\"message\": \"There is no request to add a pet with id=200!\"\n" +
                         "}"
                 ));
     }
