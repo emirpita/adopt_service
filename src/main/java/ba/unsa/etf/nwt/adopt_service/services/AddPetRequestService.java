@@ -87,8 +87,8 @@ public class AddPetRequestService {
                     .findAll()
                     .stream()
                     .filter(n -> n.getUserID().equals(userID))
-                    .collect(Collectors.toList()).get(0) != null)
-                return new ResponseMessage(true, HttpStatus.OK, "Request to add a pet with user id=" + userID + " deleted successfully!");
+                    .collect(Collectors.toList()).size() == 0)
+                return new ResponseMessage(true, HttpStatus.OK, "Requests to add a pet with user id=" + userID + " deleted successfully!");
             return new ResponseMessage(false, HttpStatus.NOT_FOUND, "There are no requests to add a pet with user id=" + userID + "!");
         } catch (Exception e) {
             return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Internal server or database error!");
