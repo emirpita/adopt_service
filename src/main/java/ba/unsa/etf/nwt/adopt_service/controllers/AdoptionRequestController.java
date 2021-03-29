@@ -4,6 +4,8 @@ import ba.unsa.etf.nwt.adopt_service.models.AdoptionRequest;
 import ba.unsa.etf.nwt.adopt_service.response.ResponseMessage;
 import ba.unsa.etf.nwt.adopt_service.services.AdoptionRequestService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,8 +13,18 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@RefreshScope
 public class AdoptionRequestController {
     private final AdoptionRequestService adoptionRequestService;
+
+    @Value("${my.variable: default value}")
+    private String variable;
+
+    @GetMapping("/configserver/test")
+    public String getVariable() {
+        return "RETURNED VARIABLE: " + variable;
+    }
+
 
     @GetMapping("/adoption-request")
     public List<AdoptionRequest> getAdoptionRequests() {
