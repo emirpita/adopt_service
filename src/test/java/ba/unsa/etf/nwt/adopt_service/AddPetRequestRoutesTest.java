@@ -210,7 +210,7 @@ public class AddPetRequestRoutesTest {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/add-pet-request/user/{userID}", 1)
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
-                .andExpect(status().isMethodNotAllowed())
+                .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
@@ -233,10 +233,9 @@ public class AddPetRequestRoutesTest {
                 .andExpect(content().json("{\n" +
                         "\"success\": true,\n" +
                         "\"status\": \"OK\",\n" +
-                        "\"message\": \"Request to add a pet with user id=5 deleted successfully!\"\n" +
+                        "\"message\": \"Requests to add a pet with user id=5 deleted successfully!\"\n" +
                         "}"
                 ));
-        ;
     }
 
     @Test
@@ -247,9 +246,9 @@ public class AddPetRequestRoutesTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\n" +
-                        "\"success\": false,\n" +
-                        "\"status\": \"NOT_FOUND\",\n" +
-                        "\"message\": \"There is no request to add a pet with id=200!\"\n" +
+                        "\"success\": true,\n" +
+                        "\"status\": \"OK\",\n" +
+                        "\"message\": \"Request to add a pet with pet id=200 deleted successfully!\"\n" +
                         "}"
                 ));
     }
