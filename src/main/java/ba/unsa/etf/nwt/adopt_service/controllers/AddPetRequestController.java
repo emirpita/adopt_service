@@ -24,37 +24,37 @@ public class AddPetRequestController {
         return addPetRequestService.addAddPetRequest(addPetRequest);
     }
 
-    @GetMapping("/adoption-request/{userID}")
+    @GetMapping("/add-pet-request/{userID}")
     public List<AddPetRequest> getAddPetRequestByUserID(@PathVariable Long userID) {
         return addPetRequestService.getAddPetRequestByUserID(userID);
     }
 
-    @GetMapping("/adoption-request/{newPetID}")
+    @GetMapping("/add-pet-request/{newPetID}")
     public List<AddPetRequest> getAddPetRequestByNewPetID(@PathVariable Long newPetID) {
         return addPetRequestService.getAddPetRequestByNewPetID(newPetID);
     }
 
-    @GetMapping("/adoption-request/approved")
+    @GetMapping("/add-pet-request/approved")
     public List<AddPetRequest> getApprovedAddPetRequests() {
         return addPetRequestService.getApprovedAddPetRequests();
     }
 
-    @GetMapping("/adoption-request/not-approved")
+    @GetMapping("/add-pet-request/not-approved")
     public List<AddPetRequest> getNotApprovedAddPetRequests() {
         return addPetRequestService.getNotApprovedAddPetRequests();
     }
 
-    @DeleteMapping("/adoption-request/{id}")
+    @DeleteMapping("/add-pet-request/{id}")
     public ResponseMessage deleteAddPetRequestByID(@PathVariable Long id) {
         return addPetRequestService.deleteAddPetRequestByID(id);
     }
 
-    @DeleteMapping("/adoption-request/{userID}")
+    @DeleteMapping("/add-pet-request/{userID}")
     public ResponseMessage deleteAddPetRequestsByUserID(@PathVariable Long userID) {
         return addPetRequestService.deleteAddPetRequestsByUserID(userID);
     }
 
-    @DeleteMapping("/adoption-request/{newPetID}")
+    @DeleteMapping("/add-pet-request/{newPetID}")
     public ResponseMessage deleteAddPetRequestsByNewPetID(@PathVariable Long newPetID) {
         return addPetRequestService.deleteAddPetRequestsByNewPetID(newPetID);
     }

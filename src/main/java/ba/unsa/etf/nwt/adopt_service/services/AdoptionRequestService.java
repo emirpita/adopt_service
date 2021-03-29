@@ -53,7 +53,7 @@ public class AdoptionRequestService {
         return adoptionRequestRepository
                 .findAll()
                 .stream()
-                .filter(n -> !n.isApproved())
+                .filter(n -> (!n.isApproved()))
                 .collect(Collectors.toList());
     }
 
