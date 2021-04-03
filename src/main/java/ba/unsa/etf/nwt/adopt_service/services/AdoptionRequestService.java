@@ -88,7 +88,7 @@ public class AdoptionRequestService {
                     .stream()
                     .filter(n -> n.getUserID().equals(userID))
                     .collect(Collectors.toList()).size() == 0)
-                return new ResponseMessage(true, HttpStatus.OK, "Adoption request with user id=" + userID + " deleted successfully!");
+                return new ResponseMessage(true, HttpStatus.OK, "Adoption requests with user id=" + userID + " deleted successfully!");
             return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Internal server or database error!");
         } catch (Exception e) {
             return new ResponseMessage(false, HttpStatus.NOT_FOUND, "There are no adoption requests with user id=" + userID + "!");
@@ -110,7 +110,7 @@ public class AdoptionRequestService {
                     .stream()
                     .filter(n -> n.getPetID().equals(petID))
                     .collect(Collectors.toList()).size() == 0)
-                return new ResponseMessage(true, HttpStatus.OK, "Adoption request with pet id=" + petID + " deleted successfully!");
+                return new ResponseMessage(true, HttpStatus.OK, "Adoption requests with pet id=" + petID + " deleted successfully!");
             return new ResponseMessage(false, HttpStatus.INTERNAL_SERVER_ERROR, "Internal server or database error!");
         } catch (Exception e) {
             return new ResponseMessage(false, HttpStatus.NOT_FOUND, "There are no adoption requests with pet id=" + petID + "!");
